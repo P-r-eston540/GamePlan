@@ -9,8 +9,8 @@ Builder.load_string("""
 <HomeScreen>:
     BoxLayout:
         orientation: 'vertical'
-        padding: 50
-        spacing: 50
+        padding: 200
+        spacing: 15
         Button:
             text: 'Host'
             on_press: root.manager.current = 'hostscreen'

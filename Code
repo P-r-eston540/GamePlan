@@ -1,0 +1,73 @@
+from kivy.app import App
+from kivy.lang import Builder
+from kivy.uix.screenmanager import ScreenManager, Screen
+
+# Create both screens. Please note the root.manager.current: this is how
+# you can control the ScreenManager from kv. Each screen has by default a
+# property manager that gives you the instance of the ScreenManager used.
+Builder.load_string("""
+<HomeScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 50
+        spacing: 50
+        Button:
+            text: 'Host'
+            on_press: root.manager.current = 'hostscreen'
+        Button:
+            text: 'Join'
+            on_press: root.manager.current = 'joinscreen'
+        Button:
+            text: "What's Around Me?"
+            on_press: root.manager.current = 'around'
+
+<HostScreen>:
+    BoxLayout:
+        Button:
+            text: 'Cancel'
+            on_press: root.manager.current = 'home'
+        Button:
+            text: 'Host Event!'
+
+<JoinScreen>:
+    BoxLayout:
+        Button:
+            text: 'Back'
+            on_press: root.manager.current = 'home'
+        Button:
+            text: 'Next'
+
+<AroundScreen>:
+    BoxLayout:
+        Button:
+            text: 'Back'
+            on_press: root.manager.current = 'home'
+""")
+
+# Declare both screens
+class HomeScreen(Screen):
+    pass
+
+class HostScreen(Screen):
+    pass
+
+class JoinScreen(Screen):
+    pass
+
+class AroundScreen(Screen):
+    pass
+
+# Create the screen manager
+sm = ScreenManager()
+sm.add_widget(HomeScreen(name='home'))
+sm.add_widget(HostScreen(name='hostscreen'))
+sm.add_widget(JoinScreen(name='joinscreen'))
+sm.add_widget(AroundScreen(name='around'))
+
+class TestApp(App):
+
+    def build(self):
+        return sm
+
+if __name__ == '__main__':
+    TestApp().run()

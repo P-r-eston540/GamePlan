@@ -19,15 +19,25 @@ Builder.load_string("""
             markup: True
             size_hint_y: .5
         Button:
-            text: 'Host'
-            background_color: 1, 1, 1, 1
+            text: '[b]Host[/b]'
+			font_size: '24sp'
+			markup: True
             on_press: root.manager.current = 'hostscreen'
         Button:
-            text: 'Join'
+            text: '[b]Join[/b]'
+			font_size: '24sp'
+			markup: True
             on_press: root.manager.current = 'joinscreen'
         Button:
-            text: "What's Around Me?"
+            text: "[b]What's Around Me?[/b]"
+			font_size: '24sp'
+			markup: True
             on_press: root.manager.current = 'around'
+		Button:
+			text: '[b]My GamePlan[/b]'
+			font_size: '24sp'
+			markup: True
+			on_press: root.manager.current = 'mygameplan'
 
 <HostScreen>:
     GridLayout:
@@ -36,14 +46,29 @@ Builder.load_string("""
         cols: 1
         Label:
             font_size: '62sp'
-            text: "[color=000000][sub][GamePlan][/sub][/color]"
+            text: "[color=000000][sub][Host][/sub][/color]"
             markup: True
             size_hint_y: .5
-        Button:
-            text: 'Cancel'
-            on_press: root.manager.current = 'home'
-        Button:
-            text: 'Host Event!'
+			
+		GridLayout:
+			cols: 2
+			Button:
+				text: "[b]Cancel[/b]"
+				font_size: '20sp'
+				markup: True
+				padding: -10, -10
+				halign: 'center'
+				valign: 'middle'
+				text_size: self.size
+				on_press: root.manager.current = 'home'
+			Button:
+				text: "[b]Host Event[/b]"
+				font_size: '20sp'
+				markup: True
+				padding: -10, -10
+				halign: 'center'
+				valign: 'middle'
+				text_size: self.size
 
 <JoinScreen>:
     GridLayout:
@@ -52,14 +77,30 @@ Builder.load_string("""
         cols: 1
         Label:
             font_size: '62sp'
-            text: "[color=000000][sub][GamePlan][/sub][/color]"
+            text: "[color=000000][sub][Join][/sub][/color]"
             markup: True
             size_hint_y: .5
-        Button:
-            text: 'Back'
-            on_press: root.manager.current = 'home'
-        Button:
-            text: 'Next'
+			
+		GridLayout:
+			cols: 2
+			Button:
+				text: "[b]Back[/b]"
+				font_size: '20sp'
+				markup: True
+				padding: -10, -10
+				halign: 'center'
+				valign: 'middle'
+				text_size: self.size
+				on_press: root.manager.current = 'home'
+			Button:
+				text: "[b]Next[/b]"
+				font_size: '20sp'
+				markup: True
+				padding: -10, -10
+				halign: 'center'
+				valign: 'middle'
+				text_size: self.size
+
 
 <AroundScreen>:
     GridLayout:
@@ -68,11 +109,29 @@ Builder.load_string("""
         cols: 1
         Label:
             font_size: '62sp'
-            text: "[color=000000][sub][GamePlan][/sub][/color]"
+            text: "[color=000000][sub][Around Me][/sub][/color]"
+            markup: True
+            size_hint_y: .5			
+        Button:
+            text: '[b]Back[/b]'
+			font_size: '20sp'
+			markup: True
+            on_press: root.manager.current = 'home'
+			
+<My_GamePlan>:
+	GridLayout:
+		padding: 20
+		spacing: 20
+		cols: 1
+		Label:
+			font_size: '62sp'
+			text: "[color=000000][sub][My GamePlan][/sub][/color]"
             markup: True
             size_hint_y: .5
         Button:
-            text: 'Back'
+            text: '[b]Back[/b]'
+			font_size: '20sp'
+			markup: True
             on_press: root.manager.current = 'home'
 """)
 
@@ -88,6 +147,9 @@ class JoinScreen(Screen):
 
 class AroundScreen(Screen):
     pass
+	
+class My_GamePlan (Screen):
+	pass
 
 # Create the screen manager
 sm = ScreenManager()
@@ -95,6 +157,7 @@ sm.add_widget(HomeScreen(name='home'))
 sm.add_widget(HostScreen(name='hostscreen'))
 sm.add_widget(JoinScreen(name='joinscreen'))
 sm.add_widget(AroundScreen(name='around'))
+sm.add_widget(My_GamePlan(name='mygameplan'))
 
 class TestApp(App):
 

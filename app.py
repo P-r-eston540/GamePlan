@@ -86,38 +86,38 @@ Builder.load_string("""
 			# Dropdown itself is not really made to be used in kv.
 			__safe_id: [dropdown.__self__]
 
-			Button:
-				id: btn
-				text: '-'
-				on_release: dropdown.open(self)
-				size_hint_y: None
-				height: '48dp'
+		Button:
+			id: btn
+			text: 'Select A Sport'
+			on_release: dropdown.open(self)
+			size_hint_y: .4
+			height: '48dp'
 
-			Widget
+		Widget
 
 		DropDown:
 
 			id: dropdown
 			on_parent: self.dismiss()
-			on_select: btn.text = 'Selected value: {}'.format(args[1])
+			on_select: btn.text = '{}'.format(args[1])
 
 			Button:
-				text: 'Value A'
+				text: 'Soccer'
 				size_hint_y: None
 				height: '48dp'
-				on_release: dropdown.select('A')
+				on_release: dropdown.select('Soccer')
 
 			Button:
-				text: 'Value B'
+				text: 'Volleyball'
 				size_hint_y: None
 				height: '48dp'
-				on_release: dropdown.select('B')
+				on_release: dropdown.select('Volleyball')
 
 			Button:
-				text: 'Value C'
+				text: 'Tennis'
 				size_hint_y: None
 				height: '48dp'
-				on_release: dropdown.select('C')
+				on_release: dropdown.select('Tennis')
 			
 		GridLayout:
 			cols: 2

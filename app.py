@@ -83,6 +83,28 @@ Builder.load_string("""
 	        	text: 'AM'
 	        	values: ('AM','PM')
 	        	size: (33,44)
+				
+		GridLayout:
+			cols: 2
+			Label:
+	            font_size: '48sp'
+	            text: "[color=000000][sub]Select a location:[/sub][/color]"
+	            markup: True
+	            size_hint_y: .5
+			TextInput:
+				multiline: False
+				background_color: .588, .6, .588, 1
+		GridLayout:		
+			cols: 2
+			Label:
+	            font_size: '48sp'
+	            text: "[color=000000][sub]Notes:[/sub][/color]"
+	            markup: True
+	            size_hint_y: .5
+			TextInput:
+				multiline: False
+				background_color: .632, .632, .632, 1
+			
 
 	    GridLayout:
 	    	cols: 2

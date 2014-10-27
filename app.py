@@ -2,6 +2,8 @@ from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.core.window import Window
+from kivy.base import runTouchApp
+from kivy.uix.spinner import Spinner
 Window.clearcolor = (0, 0.8, .152, 1)
 
 # Create both screens. Please note the root.manager.current: this is how
@@ -49,9 +51,41 @@ Builder.load_string("""
             text: "[color=000000][sub][Host][/sub][/color]"
             markup: True
             size_hint_y: .5
-			
+		
 		GridLayout:
 			cols: 2
+	        Label:
+	            font_size: '48sp'
+	            text: "[color=000000][sub]Select a sport:[/sub][/color]"
+	            markup: True
+	            size_hint_y: .5
+	        Spinner:
+	        	text: 'Select a sport'
+	        	values: ('Soccer', 'Basketball', 'Volleyball', 'Handball')
+	        	size: (100,44)
+
+	    GridLayout:
+	    	cols: 4
+	        Label:
+	            font_size: '48sp'
+	            text: "[color=000000][sub]Select a time:[/sub][/color]"
+	            markup: True
+	            size_hint_y: .5
+	        Spinner:
+	        	text: 'Hour'
+	        	values: ('1','2','3','4','5','6','7','8','9','10','11','12')
+	        	size: (33,44)
+	        Spinner:
+	        	text: 'Min'
+	        	values: ('05','10','15','20','25','30','35','40','45','50','55')
+	        	size: (33,44)
+	        Spinner:
+	        	text: 'AM'
+	        	values: ('AM','PM')
+	        	size: (33,44)
+
+	    GridLayout:
+	    	cols: 2
 			Button:
 				text: "[b]Cancel[/b]"
 				font_size: '20sp'
@@ -79,46 +113,13 @@ Builder.load_string("""
             font_size: '62sp'
             text: "[color=000000][sub][Join][/sub][/color]"
             markup: True
-            size_hint_y: .5
-			
+            size_hint_y: .5			
 
-			# trick to not lost the Dropdown instance
-			# Dropdown itself is not really made to be used in kv.
-			__safe_id: [dropdown.__self__]
+        Spinner:
+        	text: 'Select a sport'
+        	values: ('Soccer', 'Basketball', 'Volleyball', 'Handball')
+        	size: (100,44)
 
-		Button:
-			id: btn
-			text: 'Select A Sport'
-			on_release: dropdown.open(self)
-			size_hint_y: .4
-			height: '48dp'
-
-		Widget
-
-		DropDown:
-
-			id: dropdown
-			on_parent: self.dismiss()
-			on_select: btn.text = '{}'.format(args[1])
-
-			Button:
-				text: 'Soccer'
-				size_hint_y: None
-				height: '48dp'
-				on_release: dropdown.select('Soccer')
-
-			Button:
-				text: 'Volleyball'
-				size_hint_y: None
-				height: '48dp'
-				on_release: dropdown.select('Volleyball')
-
-			Button:
-				text: 'Tennis'
-				size_hint_y: None
-				height: '48dp'
-				on_release: dropdown.select('Tennis')
-			
 		GridLayout:
 			cols: 2
 			Button:

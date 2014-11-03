@@ -57,8 +57,11 @@ Builder.load_string("""
 	        Label:
 	            font_size: '48sp'
 	            text: "[color=000000][sub]Select a sport:[/sub][/color]"
-	            markup: True
-	            size_hint_y: .5
+			    halign: 'left'
+				valign: 'middle'
+				markup: True
+				text_size: self.size
+
 	        Spinner:
 	        	text: 'Select a sport'
 	        	values: ('Soccer', 'Basketball', 'Volleyball', 'Handball')
@@ -69,8 +72,10 @@ Builder.load_string("""
 	        Label:
 	            font_size: '48sp'
 	            text: "[color=000000][sub]Select a time:[/sub][/color]"
+				halign: 'left'
+				valign: 'middle'
 	            markup: True
-	            size_hint_y: .5
+	            text_size: self.size
 	        Spinner:
 	        	text: 'Hour'
 	        	values: ('1','2','3','4','5','6','7','8','9','10','11','12')
@@ -89,8 +94,10 @@ Builder.load_string("""
 			Label:
 	            font_size: '48sp'
 	            text: "[color=000000][sub]Select a location:[/sub][/color]"
+				halign: 'left'
+				valign: 'middle'
 	            markup: True
-	            size_hint_y: .5
+	            text_size: self.size
 			TextInput:
 				multiline: False
 				background_color: .588, .6, .588, 1
@@ -99,8 +106,10 @@ Builder.load_string("""
 			Label:
 	            font_size: '48sp'
 	            text: "[color=000000][sub]Notes:[/sub][/color]"
+				halign: 'left'
+				valign: 'middle'
 	            markup: True
-	            size_hint_y: .5
+	            text_size: self.size
 			TextInput:
 				multiline: False
 				background_color: .632, .632, .632, 1
